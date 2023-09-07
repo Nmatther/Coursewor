@@ -1,0 +1,31 @@
+Body{
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    text-decoration: none;
+}
+h2{
+    text-align: left;
+    text-decoration: none;
+}
+
+  
+li{
+    text-align: left;
+    text-indent: 0.2cm;
+    text-decoration: none;
+}
+
+p{
+    text-align: left;
+    text-decoration: none;
+}
+
+.container {text-align: justify;width: 200px;}
+
+.container {display: block; margin:left;}
+
+.article-text { text-align: left;width: 400px;  text-indent: 0.25cm;}

@@ -1,9 +1,7 @@
-const freeLancers = ["Matt", "Andy", "Shannon", "Karen"];
+const freeLancers = [{ name: "Dr. Slice", price: 25, occupation: "gardener" }, { name: "Dr. Pressure", price: 51, occupation: "programmer" }]
 const occupation = ["Writer","Teacher","Programmer","Driver", "Janitor"];
 const price = [30,50,70,90,110,130,150];
-const names=[];
-const occupations=[];
-const startPrice= [];
+const names=["Matt", "Andy", "Kevin","Karen"];
 const maxEntries = 10;
 
 // `setInterval` will call `addOccupation` every 1000 milliseconds (1 second)
@@ -19,32 +17,32 @@ render(); // We call this function once to render the initial state
  */
 function render() {
   // Render the FreeLancer Name
-  const lancerName = document.querySelector("#nameList");
-  const nameElements = names.map((entry) => {
-    const element = document.createElement("li");
-    element.classList.add(entry);
+  const lancerName = document.querySelector("#tentries");
+  const nameElements = freeLancers.map((freelancer) => {
+    const element = document.createElement("tr");
+    const tdname = document.createElement("td");
+    tdname.innerText = freelancer.name;
+    const tdoccname = document.createElement("td");
+    tdoccname.innerText = freelancer.occupation;
+    const tdpay = document.createElement("td");
+    tdpay.innerText = freelancer.price
+   // element.classList.add(freelancer.name);
+
+    element.appendChild(tdname);
+    element.appendChild(tdoccname);
+    element.appendChild(tdpay);
+
     return element;
   });
   lancerName.replaceChildren(...nameElements);
 
+
   // TODO: Render the Freelancer's Occupation
-  const lancerOcc = document.querySelector("#OccList");
-  const occupationElements = occupations.map((entry) => {
-    const element = document.createElement("li");
-    element.classList.add(entry);
-    return element;
-  });
-  lancerOcc.replaceChildren(...occupationElements);
+  
 
   // TODO: Render the Freelancer's Starting Price
 
-  const lancerPrice = document.querySelector("#PriceList");
-  const priceElements = startPrice.map((entry) => {
-    const element = document.createElement("li");
-    element.classList.add(entry);
-    return element;
-  });
-  lancerPrice.replaceChildren(...priceElements);
+  console.log(freeLancers);
  
 }
 
@@ -54,26 +52,26 @@ function render() {
 function addEntry() {
 
     //Randomize Name Entry
-    const name = freeLancers[Math.floor(Math.random() * freeLancers.length)];
+    const name = names[Math.floor(Math.random() * names.length)];
     
-    names.push(name);
+    
 
     //Randomize Occupation Entry
 
     const job = occupation[Math.floor(Math.random() * occupation.length)];
 
-    occupations.push(job);
+    
 
     //Randomize Price Entry
 
     const money = price[Math.floor(Math.random() * price.length)];
 
-    startPrice.push(money);
+    freeLancers.push({name, occupation: job, price: money});
   
     render();
   
     // TODO: Stop adding entries if we've reached the maximum number of entries
-    if (names.length >= maxEntries) {
+    if (freeLancers.length >= maxEntries) {
       clearInterval(addNameIntervalId);
     }
   }

@@ -1,0 +1,45 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: left;
+    
+}
+
+body {
+    
+    margin: 20px;
+}
+
+.name{
+    display: flex;
+    flex-wrap: wrap;
+    width: 150px;
+     
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width:100%;
+}
+
+.occuptation{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    justify-content: left;
+    list-style-type: none;
+
+   
+  }
+  
+li {
+    color: black;
+    text-size-adjust: 16px;
+  }
+

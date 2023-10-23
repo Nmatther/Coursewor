@@ -54,7 +54,6 @@ function addEntry() {
     //Randomize Name Entry
     const name = names[Math.floor(Math.random() * names.length)];
     
-    
 
     //Randomize Occupation Entry
 

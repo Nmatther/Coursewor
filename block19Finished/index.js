@@ -35,15 +35,19 @@ function render() {
     return element;
   });
   lancerName.replaceChildren(...nameElements);
+  calculateAveragePrice();
+}
 
-
-  // TODO: Render the Freelancer's Occupation
-  
-
-  // TODO: Render the Freelancer's Starting Price
-
-  console.log(freeLancers);
- 
+function calculateAveragePrice() {
+  var table = document.getElementById("table"), avgVal, sumVal = 0, 
+    rowCount = table.rows.length - 1;// minus the header
+            
+      for(var i = 1; i < table.rows.length; i++)
+        {
+          sumVal = sumVal + parseInt(table.rows[i].cells[2].innerHTML);
+        }
+            
+      document.getElementById("val").innerHTML = "The Average Starting Price is $ " + parseInt(sumVal / rowCount);
 }
 
 /**
@@ -54,12 +58,9 @@ function addEntry() {
     //Randomize Name Entry
     const name = names[Math.floor(Math.random() * names.length)];
     
-
     //Randomize Occupation Entry
 
     const job = occupation[Math.floor(Math.random() * occupation.length)];
-
-    
 
     //Randomize Price Entry
 
@@ -72,5 +73,6 @@ function addEntry() {
     // TODO: Stop adding entries if we've reached the maximum number of entries
     if (freeLancers.length >= maxEntries) {
       clearInterval(addNameIntervalId);
+    
     }
-  }
+}

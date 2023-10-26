@@ -16,39 +16,41 @@ form.addEventListener('submit', (number) => {
 
 singleSort.addEventListener('click', (firstEntry) => {
     firstEntry.preventDefault();
-    render()
+    sortSingle();
+    render();
 
 });
 
 sortAll.addEventListener('click', (entries) => {
     entries.preventDefault();
-    splitOddAndEven(nums);
+    splitOddAndEven();
     render();
 });
 
 function render() {
-    const numbersEl = document.querySelector('#numberBank');
+    const numbersEl = document.querySelector('#numberBank output');
     const numBank = nums.join('')
     numbersEl.textContent = numBank;
 
-    const oddsEl = document.querySelector('#odds');
-    oddsEl.textContent = returnObject.odd;
+    
+    const oddsEl = document.querySelector('#odds output');
+    oddsEl.textContent = oddBank.join('');
 
-    const evenEl = document.querySelector('#evens');
-    evenEl.textContent = returnObject.even;
+    const evenEl = document.querySelector('#evens output');
+    evenEl.textContent = evenBank.join('');
 }
 
-function singleSort (nums) {
+function sortSingle () {
     // check First element of nums array to see if it is odd or even. Then remove number and add to corrspondign odd or even array
     const firstElement = nums.shift();
-    if (firstElement % 2 === 1){
-        return evenBank.push(firstElement);
+    if (firstElement % 2 === 0){
+        evenBank.push(firstElement);
     } else {
-        return oddBank.push(firstElement);
+        oddBank.push(firstElement);
     }
 
 }
-function splitOddAndEven (nums) {
+function splitOddAndEven () {
 
     // filter out the odd numbers
     const odd = nums.filter((number) => number % 2 === 1);
@@ -57,10 +59,6 @@ function splitOddAndEven (nums) {
     const even = nums.filter((number) => number % 2 === 0);
 
     //create an object with the odd and even array in it
-    const returnObject = {
-        even,
-        odd,
-    };
-
-    return returnObject;
+    oddBank.push(...odd);
+    evenBank.push(...even);
 }
